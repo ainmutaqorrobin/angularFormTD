@@ -14,7 +14,11 @@
               required
             />
           </div>
-          <button class="btn btn-default" type="button">
+          <button
+            class="btn btn-default"
+            (click)="suggestUserName()"
+            type="button"
+          >
             Suggest an Username
           </button>
           <div class="form-group">
@@ -61,12 +65,26 @@
         </div>
         <p>Your answer {{ answer }}</p>
         <div class="radio" *ngFor="let gender of genders">
-          <label><input type="radio" name="gender" ngModel [value]="gender" >{{ gender }}</label>
+          <label
+            ><input type="radio" name="gender" ngModel [value]="gender" />{{
+              gender
+            }}</label
+          >
         </div>
         <button class="btn btn-primary" type="submit" [disabled]="!form.valid">
           Submit
         </button>
       </form>
+    </div>
+  </div>
+  <div class="row" *ngIf="submitted">
+    <div class="row-xs-12">
+      <h3>Your Data</h3>
+      <p>Username: {{ user.username }}</p>
+      <p>Email:{{ user.email }}</p>
+      <p>Secret Question: {{ user.secret }}</p>
+      <p>Answer : {{ user.questionAnswer }}</p>
+      <p>Gender : {{ user.gender }}</p>
     </div>
   </div>
 </div>
